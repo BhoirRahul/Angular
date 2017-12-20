@@ -1,0 +1,28 @@
+<DOCTYPE <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Custom_Calc</title>
+</head>
+<body ng-app="calculator">
+    <header class="header_class"><h4>CALCULATOR</h4></header>
+        <div ng-controller="calculatorController as cc">
+            <input type="text" name="input1" ng-model="cc.input1" placeholder="num1">
+            <span ng-bind="cc.selectOperator"></span>
+            <input type="text" name="input2" ng-model="cc.input2" placeholder="num2">
+            <input type="button" ng-click="cc.resultOutput();" value="=">
+            <input type="text" ng-model="cc.result"><br>
+            <br>    
+            Select Operator :
+                        <input type="button" value="+" ng-click="cc.operatorClick('+');">
+                        <input type="button" value="-" ng-click="cc.operatorClick('-');">
+                        <input type="button" value="/" ng-click="cc.operatorClick('/');">
+                        <input type="button" value="*" ng-click="cc.operatorClick('*');">
+        </div>
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+<script src="calc_CustomJs.js"></script>
+<link rel="stylesheet" href="calCss.css">
+</html>

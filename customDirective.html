@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Custom Ditrective</title>
+</head>
+<body ng-app="customDirective">
+    <div ng-controller="directiveController as dc">    
+            
+            <first-directive  action="dc.click()" dname={{dc.Name}} emp="dc.emp" testname="dc.Name"></first-directive>
+        
+
+            <h3>Controller's Scope</h3>
+            <h3>{{dc.Name}}</h3><br>
+            <br>
+            Click me to reverse<input type="button" ng-click="dc.reverseName()" value="Reverse">
+        
+    </div>
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+<script src="DirectiveJs.js"></script>
+<link rel="stylesheet" href="customDirectiveCss.css">
+</html> 

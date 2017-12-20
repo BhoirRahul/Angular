@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular First</title>
+</head>
+ 
+<body  ng-app="student">
+    
+    <header>
+        <u><h3 align="center">Student Application</h3></u>
+    </header>
+
+<div ng-controller="studentController as st">
+<form name="stuForm">
+    <table cellpadding="2" cellspacing = "2" align="center">
+        <tr>
+            <td>ID :</td>
+            <td><input type="text" name="id" ng-model="st.id" required ng-pattern="/[0-9]/" placeholder="Enter digits only">
+                <span ng-show="stuForm.id.$touched" class="errorClass">
+                    <span ng-show="stuForm.id.$error.required" >*ID required</span>
+                    <span ng-show="stuForm.id.$error.pattern">*Enter valid ID</span>
+                </span>
+            </td>
+        </tr>
+         
+        <tr>
+            <td>Name :</td>
+            <td>
+                <input type="text" name="name" ng-model="st.name" required ng-pattern="/[a-zA-Z]/" placeholder="Enter characters only">
+                <span ng-show="stuForm.name.$touched" class="errorClass">
+                <span ng-show="stuForm.name.$error.required">*Name required</span>
+                <span ng-show="stuForm.name.$error.pattern">*Enter valid Name</span>
+                </span>
+            </td>
+         </tr>
+        <tr>
+            <td>Email :</td>
+            <td>
+                <input type="text" name="email" ng-model="st.email" required ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" placeholder="abc@gmail.com">
+                <span ng-show="stuForm.email.$touched" class="errorClass">
+                <span ng-show="stuForm.email.$error.required">*Email required</span>
+                <span ng-show="stuForm.email.$error.pattern">*Enter valid Email</span>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>Contact :</td>
+            <td>
+                <input type="text" name="contact" ng-model="st.contact" required ng-pattern="/^[0-9]{10}$/" placeholder="0123456789">
+                <span ng-show="stuForm.contact.$touched" class="errorClass">
+                <span ng-show="stuForm.contact.$error.required">*Contact required</span>
+                <span ng-show="stuForm.contact.$error.pattern">*Enter valid number</span>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp</td>
+            <td>
+                <!--<input type="button" value="Add" ng-click="add()">-->
+                <button type="submit" ng-disabled="stuForm.$invalid" ng-click="st.add()">Add</button>
+                <input type="button" value="Save"ng-click="st.save()">
+            </td>
+        </tr>  
+    </table>
+</form>
+    
+    <u><h3 align="center">Student Records</h3></u>
+    <table cellpadding = "2" cellspacing = "2" align="center" border="1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact No</th>
+                <th>Option</th>
+            </tr>
+            <tr ng-repeat=" x in st.stuInfo ">
+                <td>{{ x.id }}</td>
+                <td>{{ x.name }}</td>
+                <td>{{ x.email }}</td>
+                <td>{{ x.contact }}</td>
+                <td>
+                    <a href="#" ng-click="st.delEntry(x.id)">Delete</a>
+                    <a href="#" ng-click="st.editInput(x.id)">Edit</a>
+                </td>
+            </tr>
+    </table><br>
+    <div ng-app="student">
+        <input type="checkbox" ng-model="checkSearch" class="checkBoxClass"> Click for searching ...
+        <div ng-controller="studentController as st" ng-show="checkSearch">
+                <u><h3 align="center">Filtered Result</h3></u>
+                <input type="text" placeholder="Search by name/id/email" ng-model="searchString" class="textBoxClass">
+                <br>
+                <table cellpadding = "2" cellspacing = "2" align="center" border="1"> <br>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Contact No</th>
+                        </tr>
+                        <tr ng-repeat=" x in st.stuInfo | filter : searchString ">
+                            <td>{{ x.id }}</td>
+                            <td>{{ x.name }}</td>
+                            <td>{{ x.email }}</td>
+                            <td>{{ x.contact }}</td>
+                        </tr>
+                    </table>
+        </div>
+    </div>
+    
+</div>
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+<script src="stuTest.js"></script>
+<link rel="stylesheet" href="stuCss.css">
+</html

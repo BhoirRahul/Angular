@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>ng-repeat</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+  <script src="repeat.js"></script>
+</head>
+<body ng-app="app">
+  <div ng-controller ="appController as ac">
+        <div ng-repeat="i in list1">
+                <div ng-repeat="j in list2">
+                    <div>
+                        {{ac.$parent.$index}} {{ac.$index}}
+                    </div>
+                </div>
+        </div>
+    </div>
+</body>
+</html>

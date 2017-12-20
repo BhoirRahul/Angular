@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>Custom Service</title>
+    </head>
+    <body ng-app="custom">
+        <div ng-controller="customController as cc"> 
+            Enter the number :<input type="text" ng-model="cc.input" style="margin-left : 44px"><input type="button" value="square" ng-click="square">
+            <p>The square of number is :<input type="text" ng-bind="cc.result"></p>
+        </div>
+    </body>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+    <script src="jsCustom.js"></script>    
+</html>
